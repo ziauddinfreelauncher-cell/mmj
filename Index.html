@@ -1,1 +1,72 @@
-
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>বইঘর | অনলাইন বুকশপ</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fffaf3;color:#29251f}
+header{background:#245b45;color:white;padding:24px 16px;text-align:center}
+header h1{margin:0;font-size:34px}
+header p{margin-bottom:0}
+.search{display:block;width:90%;max-width:500px;margin:20px auto;padding:13px;border:1px solid #ddd;border-radius:10px;font-size:16px}
+h2{text-align:center}
+.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:15px;padding:16px;max-width:950px;margin:auto}
+.book{background:white;border:1px solid #eee;border-radius:12px;padding:15px;text-align:center;box-shadow:0 3px 10px #00000008}
+.cover{font-size:58px;background:#e6efe5;padding:22px 5px;border-radius:8px}
+.book h3{font-size:17px}
+.price{color:#245b45;font-weight:bold}
+button{background:#245b45;color:white;border:0;padding:11px 14px;border-radius:8px;cursor:pointer}
+footer{text-align:center;padding:25px;background:#eee9df;margin-top:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>📚 বইঘর</h1>
+<p>আপনার প্রিয় বই, আপনার হাতের নাগালে</p>
+</header>
+<input class="search" id="search" placeholder="🔎 বইয়ের নাম খুঁজুন..." oninput="findBooks()">
+<h2>আমাদের বইসমূহ</h2>
+<div class="books" id="books">
+<div class="book">
+<div class="cover">📕</div>
+<h3>বাংলা গল্পের বই</h3>
+<p class="price">৳২০০</p>
+<button onclick="order('বাংলা গল্পের বই',200)">অর্ডার করুন</button>
+</div>
+<div class="book">
+<div class="cover">📗</div>
+<h3>ইংরেজি শেখার বই</h3>
+<p class="price">৳২৫০</p>
+<button onclick="order('ইংরেজি শেখার বই',250)">অর্ডার করুন</button>
+</div>
+<div class="book">
+<div class="cover">📘</div>
+<h3>জ্ঞান ও বিজ্ঞান</h3>
+<p class="price">৳৩০০</p>
+<button onclick="order('জ্ঞান ও বিজ্ঞান',300)">অর্ডার করুন</button>
+</div>
+</div>
+<footer>
+<p>বইঘর — বই পড়ুন, জ্ঞানের আলো ছড়ান ❤️</p>
+<p>বিকাশ / নগদ পেমেন্টের তথ্য অর্ডার নিশ্চিত করার সময় জানানো হবে।</p>
+</footer>
+<script>
+function findBooks(){
+let q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.book').forEach(b=>{
+b.style.display=b.innerText.toLowerCase().includes(q)?'block':'none';
+});
+}
+function order(book,price){
+let phone=prompt('আপনার ফোন নম্বর লিখুন:');
+if(!phone)return;
+let address=prompt('বই পাঠানোর ঠিকানা লিখুন:');
+if(!address)return;
+let msg='বই অর্ডার: '+book+'\nদাম: ৳'+price+'\nফোন: '+phone+'\nঠিকানা: '+address;
+alert('আপনার অর্ডারের তথ্য তৈরি হয়েছে। বিক্রেতার WhatsApp নম্বর যোগ করলে অর্ডার পাঠানো যাবে।\n\n'+msg);
+}
+</script>
+</body>
+</html>
